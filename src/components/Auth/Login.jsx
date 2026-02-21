@@ -31,6 +31,7 @@ const Login = () => {
               placeholder="Username"
               className="outline-0"
               value={userName}
+              required
               onChange={(e) => {
                 setUserName(e.target.value);
               }}
@@ -45,6 +46,7 @@ const Login = () => {
               type="password"
               name=""
               value={password}
+              required
               onChange={(e) => {
                 setPassWord(e.target.value);
               }}
