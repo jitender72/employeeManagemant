@@ -2,7 +2,7 @@ import React from "react";
 
 const CreateTask = () => {
   return (
-    <form className="p-4 flex justify-center  bg-blue-100 flex-col">
+    <form className="p-4 flex justify-center  bg-blue-500 rounded flex-col">
       <div className=" flex justify-center gap-5 p-2 ">
         <h3 className="font-semibold">Task Title</h3>
         <input
@@ -38,7 +38,7 @@ const CreateTask = () => {
         />
       </div>
 
-      <button className="p-2 font-semibold  rounded-sm bg-amber-400 w-sm m-auto">
+      <button className="p-2 font-semibold  rounded-sm bg-[#1c1c1c] text-white w-sm m-auto">
         Create Task
       </button>
     </form>
