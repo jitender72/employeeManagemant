@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Login from "./components/Auth/Login";
 import Header from "./components/otherComponents/Header";
 import EmployeeDashBoard from "./components/DashBoard/EmployeeDashBoard";
 import AdminDashBoard from "./components/DashBoard/AdminDashBoard";
+import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -19,6 +20,9 @@ const App = () => {
       alert("invalid credentials");
     }
   };
+
+  const data = useContext(AuthContext);
+  console.log("context is: ", data);
 
   return (
     <div className="bg-[#1c1c1c] h-screen">
