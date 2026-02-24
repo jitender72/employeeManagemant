@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { RiLockPasswordFill } from "react-icons/ri";
-const Login = () => {
+const Login = ({ handleLogin }) => {
+  // console.log(handleLogin);
+
   const [userName, setUserName] = useState("");
   const [password, setPassWord] = useState("");
 
   // to way binding
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("form submit successfully:", userName, password);
+    // console.log("form submit successfully");
+    handleLogin(userName, password);
 
     setUserName("");
     setPassWord("");
