@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Login from "./components/Auth/Login";
 import Header from "./components/otherComponents/Header";
 import EmployeeDashBoard from "./components/DashBoard/EmployeeDashBoard";
@@ -7,22 +7,24 @@ import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const authData = useContext(AuthContext);
+
   // handleLogin to check "email,password" match or not ?
   const handleLogin = (email, password) => {
-    // console.log(email, password);
-    if (email == "admin@gmail.com" && password == 123) {
-      // console.log("its admin");
+    const isAdmin = authData.admin.find(
+      (e) => email == e.email && password == e.password,
+    );
+    const isEmployees = authData.employees.find(
+      (e) => email == e.email && password == e.password,
+    );
+    if (isAdmin) {
       setUser("admin");
-    } else if (email == "employee@gmail.com" && password == "123") {
-      // console.log("this is user");
-      setUser("employee");
+    } else if (isEmployees) {
+      setUser("employees");
     } else {
       alert("invalid credentials");
     }
   };
-
-  const data = useContext(AuthContext);
-  console.log("context is: ", data);
 
   return (
     <div className="bg-[#1c1c1c] h-screen">
