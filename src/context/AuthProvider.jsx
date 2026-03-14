@@ -9,8 +9,8 @@ const AuthProvider = ({ children }) => {
     // store data in local storage
     setLocalStorage();
     const { employees, admin } = getLocalStorage();
-    console.log("Employees Data:", employees);
-    console.log("Admin Data:", admin);
+    // console.log("Employees Data:", employees);
+    // console.log("Admin Data:", admin);
     setUserData({ employees, admin });
 
     // const { employee, admin } = getLocalStorage();
