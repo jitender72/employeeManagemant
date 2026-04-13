@@ -4,7 +4,7 @@ import CreateTask from "../otherComponents/CreateTask";
 import AllTask from "../otherComponents/AllTask";
 const AdminDashBoard = () => {
   return (
-    <div className="p-10">
+    <div className="p-10 bg-black">
       <Header />
       <CreateTask />
       <AllTask />

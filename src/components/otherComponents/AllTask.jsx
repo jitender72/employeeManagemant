@@ -2,7 +2,7 @@ import React from "react";
 
 const AllTask = () => {
   return (
-    <div className="bg-black     p-4 mt-5 rounded h-40 overflow-auto">
+    <div className="bg-black  mt-5 rounded h-40 overflow-auto ">
       <div className="bg-red-400  mb-2  py-2 px-4 rounded flex justify-between text-white capitalize">
         <h2>jitender</h2>
         <h3>Make a UI Design</h3>
