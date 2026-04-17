@@ -5,7 +5,7 @@ const CreateTask = () => {
     <div class="bg-blue-500 sm:p-8 rounded-lg md:max-w-full flex justify-center w-full">
       <form className="md:space-y-4 sm:border p-8 rounded-2xl w-full md:max-w-md">
         <div className="flex flex-col w-full ">
-          <label className="text-white font-medium">Task Title</label>
+          <label className="text-white font-medium mb-1">Task Title</label>
           <input
             type="text"
             placeholder="Make a UI Design"
@@ -14,7 +14,7 @@ const CreateTask = () => {
         </div>
 
         <div className="flex flex-col ">
-          <label className="text-white font-medium">Assign To</label>
+          <label className="text-white font-medium mb-1">Assign To</label>
           <input
             type="text"
             placeholder="Employee Name"
@@ -23,7 +23,7 @@ const CreateTask = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-white font-medium">Date</label>
+          <label className="text-white font-medium mb-1">Date</label>
           <input
             type="date"
             className="bg-transparent border border-gray-300 rounded px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-white/50 w-full scheme-dark"
@@ -31,7 +31,7 @@ const CreateTask = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-white font-medium">Category</label>
+          <label className="text-white font-medium mb-1">Category</label>
           <input
             type="text"
             placeholder="design"
@@ -40,7 +40,7 @@ const CreateTask = () => {
         </div>
 
         <div className="flex flex-col">
-          <label className="text-white font-medium mt-2">Description</label>
+          <label className="text-white font-medium mb-1">Description</label>
           <textarea
             rows="4"
             className="bg-transparent border border-gray-300 rounded px-3 py-2 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 w-full resize-none"

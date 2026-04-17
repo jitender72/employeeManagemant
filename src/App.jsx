@@ -47,10 +47,11 @@ const App = () => {
     }
   };
 
-  // const handleLogout = () => {
-  //   setUser(null);
-  //   localStorage.removeItem("loggedInUser");
-  // };
+  // handle logout to remove user from localStorage and set user to null
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("loggedInUser");
+  };
 
   return (
     <div className="bg-[#1c1c1c] h-screen">
@@ -75,13 +76,14 @@ const App = () => {
 
       {/* admin Dashboard*/}
       <Activity mode={user === "admin" ? "visible" : "hidden"}>
-        <AdminDashBoard />
+        <AdminDashBoard changeUser={handleLogout} />
       </Activity>
 
       {/* Employee Dashboard */}
       <Activity mode={user === "employees" ? "visible" : "hidden"}>
         <EmployeeDashBoard
           data={JSON.parse(localStorage.getItem("loggedInUser"))?.data}
+          changeUser={handleLogout}
         />
       </Activity>
 
