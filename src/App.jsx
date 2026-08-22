@@ -1,46 +1,49 @@
-import React, { useContext, useState, Activity } from "react";
+import React, { useContext, useState, Activity, useEffect } from "react";
 import Login from "./components/Auth/Login";
 import Header from "./components/otherComponents/Header";
 import EmployeeDashBoard from "./components/DashBoard/EmployeeDashBoard";
 import AdminDashBoard from "./components/DashBoard/AdminDashBoard";
 import { AuthContext } from "./context/AuthProvider";
+import { setLocalStorage } from "./utils/LocalStorage";
 
 const App = () => {
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("loggedInUser");
-    return savedUser ? JSON.parse(savedUser).role : null;
-  });
+  const [user, setUser] = useState();
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
 
   // context data
-  const authData = useContext(AuthContext);
-  // who is loggedIn
-  // useEffect(() => {
-  //   if (authData) {
-  //     const loggedInUser = localStorage.getItem("loggedInUser");
-  //     if (loggedInUser) {
-  //       setUser(loggedInUser.role);
-  //     }
-  //   }
-  // }, [authData]);
+  const { userData, setUserData } = useContext(AuthContext);
 
-  // handleLogin to check "email,password" match or not ?
+  useEffect(() => {
+    if (!localStorage.getItem("employees")) {
+      setLocalStorage();
+    }
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      const userData = JSON.parse(loggedInUser);
+      setUser(userData.role);
+      setLoggedInUserData(userData.data);
+    }
+  }, []);
+
+  // handleLogin to check "email,password" match or not ?......
   const handleLogin = (email, password) => {
-    if (!authData) return;
+    if (!userData) return;
 
-    const isAdmin = authData.admin.find(
+    const isAdmin = userData.admin.find(
       (e) => email == e.email && password == e.password,
     );
-    const isEmployees = authData.employees.find(
+    const isEmployees = userData.employees.find(
       (e) => email == e.email && password == e.password,
     );
     if (isAdmin) {
       setUser("admin");
       localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
     } else if (isEmployees) {
-      setUser("employees");
+      setUser("employee");
+      setLoggedInUserData(isEmployees);
       localStorage.setItem(
         "loggedInUser",
-        JSON.stringify({ role: "employee" }),
+        JSON.stringify({ role: "employee", data: isEmployees }),
       );
     } else {
       alert("invalid credentials");
@@ -80,7 +83,7 @@ const App = () => {
       </Activity>
 
       {/* Employee Dashboard */}
-      <Activity mode={user === "employees" ? "visible" : "hidden"}>
+      <Activity mode={user === "employee" ? "visible" : "hidden"}>
         <EmployeeDashBoard
           data={JSON.parse(localStorage.getItem("loggedInUser"))?.data}
           changeUser={handleLogout}

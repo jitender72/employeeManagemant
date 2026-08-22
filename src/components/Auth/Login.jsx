@@ -72,7 +72,7 @@ const Login = ({ handleLogin }) => {
             <span>Forgot password?</span>
           </div>
           {/* login button */}
-          <button className="bg-black hover:bg-white text-white hover:text-black  p-3 rounded-2xl w-full text-sm font-bold transition-all duration-300 ease-in-out">
+          <button className="bg-black hover:bg-white text-white hover:text-black  p-3 rounded-2xl w-full text-sm font-bold transition-all duration-300 ease-in-out cursor-pointer">
             Login
           </button>
           <p className="text-center">Dont't have an account? Register</p>
